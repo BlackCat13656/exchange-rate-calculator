@@ -1,9 +1,28 @@
 "use strict";
 
+
+const currencyEl_one = document.getElementById("currency-one");
+const amountEl_one = document.getElementById("amount-one");
+const currencyEl_two = document.getElementById("currency-two");
+const amountEl_two = document.getElementById("amount-two");
+
+const rateEl = document.getElementById("rate");
+const swap = document.getElementById("swap");
+
+
+// Fet exchange rates and update the DOM
 function calculate() {
-    fetch('items.json')
-    .then(res => res.json())
-    .then(data => (document.body.inneHTML = data[0].text))
+    const currency_one = currencyEl_one.value;
+    const currency_two = currencyEl_two.value;  
+
+    console.log(currency_one, currency_two);
+
 }
 
-calculate(); 
+//Event Listeners
+currencyEl_one.addEventListener("change", calculate);
+amountEl_one.addEventListener("input", calculate);
+currencyEl_two.addEventListener("change", calculate);
+amountEl_two.addEventListener("input", calculate);
+
+calculate();
